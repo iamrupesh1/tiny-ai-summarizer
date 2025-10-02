@@ -1,12 +1,11 @@
-import os
 import requests
-from dotenv import load_dotenv
 import streamlit as st
 
-# Load Hugging Face API key from .env
-load_dotenv()
+# Hugging Face API URL
 API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-headers = {"Authorization": f"Bearer {os.getenv('HF_API_KEY')}"}
+
+# Use API key from Streamlit secrets
+headers = {"Authorization": f"Bearer {st.secrets['HF_API_KEY']}"}
 
 def summarize(text):
     """Send text to Hugging Face model and return summary."""
